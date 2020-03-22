@@ -1,0 +1,25 @@
+{% extends 'DashbordBase.html' %}
+{% load static %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+{% block Title %}
+Add Teacher
+{% endblock Title %}
+
+{% block MainContentBody %}
+<!-- main contect  -->
+    <div class="col-lg-9">
+        <div class="mt-3">
+            <div class="row">
+                <div class="col-md-9 offset-1">
+                    <div class="p-2">
+                        <h3>Add Teacher</h3>
+                        <br><br>
+                        {% crispy form %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- end main content -->
+{% endblock MainContentBody %}

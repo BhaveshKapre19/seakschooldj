@@ -1,0 +1,52 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- stylesheet -->
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<!-- fontawesom css -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+		{% comment %} <link rel="stylesheet" href="{% static 'Admin/css/index.css' %}"> {% endcomment %}
+		<!-- end stylesheet -->
+		<title>SEAK-ADMIN {% block Title %}{% endblock %}</title>
+	</head>
+	<body>
+	{% comment %} navbar {% endcomment %}
+	{% include 'DashbordPartials/navbar.html' %}
+{% comment %} endnavbar {% endcomment %}
+{% comment %} headerTop {% endcomment %}
+{% include 'DashbordPartials/header.html' %}
+{% comment %} end headerTop {% endcomment %}
+{% comment %} breadcrum {% endcomment %}
+<!-- breadcrum -->
+<section id="breadcrum" class="container mt-3">
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{% url 'Dashbord:DashbordIndex' %}">Home</a></li>
+			{% block Breadcrum %}
+			{% endblock Breadcrum %}
+		</ol>
+	</nav>
+</section>
+<!--end breadcrum -->
+{% comment %} end breadcrum {% endcomment %}
+{% comment %} alert {% endcomment %}
+{% include 'DashbordPartials/alert.html' %}
+{% comment %} End alert {% endcomment %}
+{% comment %} mainWithSidebar {% endcomment %}
+{% include 'DashbordPartials/main.html' %}
+{% comment %} end mainWithSidebar {% endcomment %}
+{% comment %} bodyBlock {% endcomment %}
+{% block MainContentBody %}
+{% endblock MainContentBody %}
+{% comment %} end bodyBlock {% endcomment %}
+{% comment %} modal {% endcomment %}
+{% include 'DashbordPartials/modal.html' %}
+{% comment %} end modal {% endcomment %}
+{% comment %} footerSection {% endcomment %}
+{% include 'DashbordPartials/footer.html' %}
+{% comment %} end footerSection {% endcomment %}

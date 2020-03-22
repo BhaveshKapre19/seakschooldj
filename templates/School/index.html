@@ -1,0 +1,9 @@
+{% extends 'school_base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %} {{ Title }} {% endblock title %}
+{% block contentMainRow %}
+{% include 'SchoolPartials/slider.html' %}
+
+{% include 'SchoolPartials/message.html' %}
+{% endblock contentMainRow %}

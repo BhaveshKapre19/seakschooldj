@@ -1,0 +1,18 @@
+{% extends 'DashbordBase.html' %}
+{% load static %}
+{% load humanize %}
+{% block Title %}
+	Delete Notice
+{% endblock Title %}
+{% block MainContentBody %}
+	<!-- main contect  -->
+	<div class='p-2 mt-2'>
+		<h3>Delete Teacher</h3>
+		<form method="post">{% csrf_token %}
+			<p>Are you sure you want to delete the notice "{{ object }}"?</p>
+			<input type="submit" value="Confirm" class="btn btn-success">&nbsp;&nbsp;
+			<a href="{% url 'Dashbord:NoticeDetail' object.noticeSlug %}" class="btn btn-danger">Go Back</a>
+		</form>
+	</div>
+	<!-- end main content -->
+{% endblock MainContentBody %}

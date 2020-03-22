@@ -1,0 +1,22 @@
+{% extends 'DashbordBase.html' %}
+{% load static %}
+{% load humanize %}
+{% block Title %}
+	Delete Nt
+{% endblock Title %}
+{% block Breadcrum %}
+    <li class="breadcrumb-item"><a href="{% url 'Dashbord:NtsListView' %}">Nt List</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'Dashbord:NtsDetail' object.ntSlug %}">Nt Details</a></li>
+{% endblock Breadcrum %}
+{% block MainContentBody %}
+	<!-- main contect  -->
+	<div class='p-2 mt-2'>
+		<h3>Delete Teacher</h3>
+		<form method="post">{% csrf_token %}
+			<p>Are you sure you want to delete the Nt "{{ object }}"?</p>
+			<input type="submit" value="Confirm" class="btn btn-success">
+			<a href="{% url 'Dashbord:NtsDetail' object.ntSlug %}" class="btn btn-danger">Go Back</a>
+		</form>
+	</div>
+	<!-- end main content -->
+{% endblock MainContentBody %}

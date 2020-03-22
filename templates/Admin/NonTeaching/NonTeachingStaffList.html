@@ -1,0 +1,101 @@
+{% extends 'DashbordBase.html' %}
+{% load static %}
+{% load humanize %}
+{% block Title %}
+	NTS's List
+{% endblock Title %}
+{% block Breadcrum %}
+	<li class="breadcrumb-item"><a href="{% url 'Dashbord:NtsListView' %}">NTS List</a></li>
+{% endblock Breadcrum %}
+{% block MainContentBody %}
+	<!-- main contect  -->
+	<!-- table -->
+	<div class="col-lg-9">
+		<div class="p-2 mt-3">
+			{% if NonTeachingStaff %}
+				<h3 class="text-center p-3">Non Teaching Staff</h3>
+				<div class="dropdown">
+					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Action
+					</button>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="{% url 'Dashbord:NtsCreateView' %}">Add NTS</a>
+						<a class="dropdown-item" href="#">link2</a>
+						<a class="dropdown-item" href="#">Link 3</a>
+					</div>
+				</div><br>
+				<table class="table table-striped table-hover text-center">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Image</th>
+							<th>Name</th>
+							<th>Last Name</th>
+							<th>Father Name</th>
+							<th>Post</th>
+							<th>Number</th>
+							<th>Joning Date</th>
+							<th>Edit</th>
+							<th>Details</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for NTS in NonTeachingStaff %}
+							<tr>
+								<td>{{ forloop.counter }}</td>
+								<td><img src="{{NTS.ntImage.url}}" alt="" width="50" height="50"></td>
+								<td>{{NTS.ntFirstName}}</td>
+								<td>{{NTS.ntLastName}}</td>
+								<td>{{NTS.ntFatherName}}</td>
+								<td>{{NTS.ntPost}}</td>
+								<td>{{NTS.ntPhoneNu}}</td>
+								<td>{{NTS.ntJoiningDate}}</td>
+								<td><a href="{% url 'Dashbord:NtsUpdate' NTS.ntSlug %}">Edit</a></td>
+								<td><a href="{% url 'Dashbord:NtsDetail' NTS.ntSlug %}">Details</a></td>
+								<td><a href="{% url 'Dashbord:NtsDelete' NTS.ntSlug %}" class="text-danger">Delete</a></td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% else %}
+				<h3 class="text-center p-3">No Nt Here</h3>
+				<div class="dropdown">
+					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					Action
+					</button>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="{% url 'Dashbord:NtsCreateView'%}">Add NTS</a>
+						<a class="dropdown-item" href="#">link2</a>
+						<a class="dropdown-item" href="#">Link 3</a>
+					</div>
+				</div>
+			{% endif %}
+			<div class="container">
+				{% if is_paginated %}
+					<ul class="pagination justify-content-center" style="margin:20px 0">
+						{% if page_obj.has_previous %}
+							<li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo;</a></li>
+						{% else %}
+							<li class="disabled page-item"><span class="page-link">&laquo;</span></li>
+						{% endif %}
+						{% for i in paginator.page_range %}
+							{% if page_obj.number == i %}
+								<li class="active page-item"><span class="page-link">{{ i }}</span></li>
+							{% else %}
+								<li class="page-item"><a href="?page={{ i }}" class="page-link">{{ i }}</a></li>
+							{% endif %}
+						{% endfor %}
+						{% if page_obj.has_next %}
+							<li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link">&raquo;</a></li>
+						{% else %}
+							<li class="disabled page-item"><span class="page-link">&raquo;</span></li>
+						{% endif %}
+					</ul>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<!-- end table -->
+	<!-- end main content -->
+{% endblock MainContentBody %}

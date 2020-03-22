@@ -1,0 +1,31 @@
+<!-- header Top -->
+<header id="header_top" class="bg-dark mb-2">
+	<div class="container text-white">
+		<div class="row">
+			<div class="col-md-10">
+				<div id="topheaderContent" class="p-4">
+					<h1><i class="fa fa-cog display-4"></i>
+					Dashbord <small>Manage Your Site</small>
+					</h1>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="dropdown show p-5">
+					<a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Manage Site
+					</a>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						{% if 'Delete' in request.path %}
+							{% elif 'Notice' in request.path %}
+							{% elif 'Teacher/Add' in request.path %}
+							{% elif 'NTS' in request.path %}
+						{% else %}
+							<a class="dropdown-item" href="#" id="AddNoticeButton" data-toggle="modal" data-target="#Add_Notice">Add Notice</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!-- end topheader -->

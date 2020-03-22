@@ -1,0 +1,89 @@
+{% extends 'DashbordBase.html' %}
+{% load static %}
+{% load humanize %}
+{% block Title %}
+SEAK DASHBORD
+{% endblock Title %}
+
+{% block MainContentBody %}
+<!-- main contect  -->
+				<div class="col-lg-9 mt-sm-2">
+					<div class="card">
+						<div class="card-header bg-dark text-white">
+							Website Overview
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="card">
+										<div class="card-header text-center">Active Notice</div>
+										<div class="card-body text-center">
+											<h2><i class="fas fa-pencil-alt">&nbsp;</i>2</h2>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="card">
+										<div class="card-header text-center">Non Teaching Staff</div>
+										<div class="card-body text-center">
+											<h2><i class="far fa-user">&nbsp;</i>4</h2>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="card">
+										<div class="card-header text-center">Students</div>
+										<div class="card-body text-center">
+											<h2><i class="fas fa-users">&nbsp;</i>5</h2>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="card">
+										<div class="card-header text-center">Notice's</div>
+										<div class="card-body text-center">
+											<h2><i class="fas fa-at">&nbsp;</i>20</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- table -->
+					<div class="p-2 mt-3">
+						{% if notices %}
+							<h3 class="text-center p-3">Recent Notice's</h3>
+							<table class="table table-striped table-hover text-center">
+								<thead>
+									<tr>
+										<th>Id</th>
+										<th>Notice Name</th>
+										<th>Notice Text</th>
+										<th>Notice Date</th>
+										<th>Edit</th>
+										<th>Details</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for notice in notices %}
+										<tr>
+											<td>{{ forloop.counter }}</td>
+											<td>{{notice.noticeName}}</td>
+											<td>{{notice.noticeText}}</td>
+											<td>{{notice.noticeDate}}</td>
+											<td><a href="{% url 'Dashbord:NoticeUpdate' notice.noticeSlug %}">Edit</a></td>
+											<td><a href="{% url 'Dashbord:NoticeDetail' notice.noticeSlug %}">Details</a></td>
+											<td><a href="{% url 'Dashbord:NoticeDelete' notice.noticeSlug %}" class="text-danger">Delete</a></td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						{% else %}
+							<h3 class="text-center p-3">No Recent Notice's</h3>
+						{% endif %}
+					</div>
+					<!-- end table -->
+				</div>
+				<!-- end main content -->
+{% endblock MainContentBody %}

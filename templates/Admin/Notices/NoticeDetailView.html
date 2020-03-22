@@ -1,0 +1,40 @@
+{% extends 'DashbordBase.html' %}
+{% load static %}
+{% load humanize %}
+{% block Title %}
+    Notice Detail
+{% endblock Title %}
+{% block Breadcrum %}
+    <li class="breadcrumb-item"><a href="#">Notice Details</a></li>
+{% endblock Breadcrum %}
+{% block MainContentBody %}
+    <!-- main contect  -->
+    <div class="col-lg-9">
+        <div class="mt-3">
+            <div class="row">
+                <div class="col-md-9 offset-1">
+                    <div class="card mb-3">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{Notice.noticeName}}</h5>
+                            <p class="card-text p-2">Notice Name :- {{Notice.noticeName}}</p>
+                            <p class="card-text p-2">Notice Text :-<br> {{Notice.noticeText}}</p><br>
+							<p class="card-text p-2">Notice Date : {{Notice.noticeDate}}</p><br>
+							<p class="card-text p-2">Notice Is Published : {{Notice.noticeIsPublished}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row text-center">
+                                <div class="col-md-6">
+                                    <a href="{% url 'Dashbord:NoticeDelete' Notice.noticeSlug %}" class="btn btn-danger">Delete</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="{% url 'Dashbord:NoticeUpdate' Notice.noticeSlug %}" class="btn btn-primary">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end main content -->
+{% endblock MainContentBody %}
