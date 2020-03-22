@@ -35,11 +35,11 @@ class NonTeachingStaff(models.Model):
         return self.ntFirstName
 
 class Notice(models.Model):
-    noticeName = models.CharField(max_length=50)
-    noticeText = models.CharField(max_length=200)
+    noticeName = models.CharField(max_length=255)
+    noticeText = models.CharField(max_length=255)
     noticeDate = models.DateField(default=datetime.now())
     noticeAssocFile = models.FileField(null=True,default='null')
-    noticeSlug = models.SlugField(max_length=500)
+    noticeSlug = models.SlugField(max_length=255)
     noticeIsPublished = models.BooleanField(default=False)
 
     class Meta:
