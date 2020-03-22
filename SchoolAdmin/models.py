@@ -39,7 +39,7 @@ class Notice(models.Model):
     noticeText = models.CharField(max_length=200)
     noticeDate = models.DateField(default=datetime.now())
     noticeAssocFile = models.FileField(null=True,default='null')
-    noticeSlug = models.SlugField()
+    noticeSlug = models.SlugField(max_length=500)
     noticeIsPublished = models.BooleanField(default=False)
 
     class Meta:
