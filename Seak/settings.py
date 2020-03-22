@@ -26,7 +26,7 @@ SECRET_KEY = '-ik!jr5^c%4!v13(f*he4shyi$04stucae(zb38wv54!le%)i*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['djschoolapp1.herokuapp.com']
+ALLOWED_HOSTS = ['']
 
 
 # Application definition
@@ -108,9 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LOGIN_REDIRECT_URL = '/SchoolDashbord/Login'
+LOGIN_REDIRECT_URL = 'Dashbord:Login'
 
-LOGIN_URL = '/SchoolDashbord/Login'
+LOGIN_URL = 'Dashbord:Login'
 
 
 # Internationalization
